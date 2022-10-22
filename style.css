@@ -1,0 +1,40 @@
+html{
+    
+    background-image: url("Images/abstract_pastel_gradient_blur_background_design_0509.jpg");
+    background-repeat:no-repeat;
+    background-size: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}   
+h1{
+    font-family:'Banana Pastry' ;
+    color: #000000;
+    text-align: center;
+}
+
+#p1{
+    font-family: 'Cooper Black';    
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    text-align: center;
+    tex
+}
+ul{
+    list-style-type: none;
+    padding: 3px:
+    backdrop-filter: blur(0.8)
+
+}
+li a{
+    color: rgb(0, 0, 0);
+    float: left;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-style: ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+
+

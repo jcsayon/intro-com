@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+    <style>
+        body{
+            background-color: rgb(51, 202, 152);
+            color: rgb(0, 0, 0); ;
+            font;
+        }
+        nav{
+            margin: -9px;
+            height: 
+            width: 
+            min-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: auto;
+        }
+        #a1{
+            margin-right: 12mm;
+        }
+        a{
+            text-align: center;
+            position: relative;
+            text-decoration: none;
+            font-family: 'Poppins',sans-serif;
+            color: #000000;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            padding: 0 10px;
+        }
+        a:after{
+            content: "";
+            position: absolute;
+            background-color: #ff3c78;
+            height: 3px;
+            width: 0;
+            left: 0;
+            bottom: -10px;
+            transition: 0.3s;
+        }
+        a:hover{
+            color: #4e4e4e;
+        }
+        a:hover:after{
+            width: 100%;
+        }
+        #h1{
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+
+        }
+        #bordercalc{
+            font-family: 'Roboto Mono', monospace;
+            border;
+        }
+    </style>
+        
+
+    <script>
+        function calcIncomeTax() {
+            var preFormattedIncome = document.getElementById("Taxable_Income").value;
+            var income = preFormattedIncome.replace(/[^\d.-]/g, '');
+            
+            if (income < 0) {
+                // You didn't make money
+                // Also handles errors for negative numbers
+                document.getElementById("total").innerHTML = (0.00).toFixed(2);
+            } else if (income >= 0 && income < 250000) {
+                var incomeTax = income * 0.0;
+                document.getElementById("total").innerHTML = (0.00).toFixed(2);
+
+            } else if (income >= 250000 && income < 400000){
+                var incomeTax = 0 + ((income - 250000) * 0.20);
+                document.getElementById("total").innerHTML = incomeTax.toFixed(2);
+
+            } else if (income >= 400000 && income < 800000) {
+                var incomeTax = 30000 + ((income - 400000) * 0.25);
+                document.getElementById("total").innerHTML = incomeTax.toFixed(2);
+
+            } else if (income >= 800000 && income < 2000000) {
+                var incomeTax = 130000 + ((income - 800000) * 0.30);
+                document.getElementById("total").innerHTML = incomeTax.toFixed(2);
+
+            } else if (income >= 2000000 && income < 8000000) {
+                var incomeTax = 490000 + ((income - 2000000) * 0.32);
+                document.getElementById("total").innerHTML = incomeTax.toFixed(2);
+            }else {
+                var incomeTax = 2410000 + ((income - 8000000) * 0.35);
+                document.getElementById("total").innerHTML = incomeTax.toFixed(2);
+            }   //
+            }
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/index.html" id="a1" >Home</a>
+        <a href="/links/Assignment 1.html" style="width:25% !important" target="_blank">Assignment 1 - Conversion</a>
+        <a href="/links/Assignment 2.html" style="width:25% !important" target="_blank">Assignment 2 - Income tax Calculator</a>
+        <a href="/links/Assignment 3.html" style="width:25% !important" target="_blank">Assignment 3 - Factorial</a>
+        <a href="links/Assignment 4.html" style="width:15% !important" target="_blank">Assignment 4 - Simple Payroll</a>
+    </nav>
+    <h1 id="h1">Assignment 2 Income Tax Calculator</h1>
+    <div id="bordercalc">
+        <h3>Income tax Calculator</h3>
+        <label for="income">Income:</label>
+        <input id="Taxable_Income"
+         type="number" name="Taxable Income" placeholder="Taxable Income" >   
+         
+        <button onclick="calcIncomeTax()">Calculate</button>
+        <p>Income Tax: ₱<span id="total"></span> </p>
+    </div>
+     
+
+</body>
+</html>

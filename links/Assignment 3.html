@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <style>
+        body{
+            background-color: rgb(51, 202, 152);
+        }
+        .calculator-box{
+            padding: 0 11px;
+            margin-bottom: 1em;
+            background-color: aliceblue;
+            border-style:groove;
+            border-radius: 10px;
+            width: fit-content;
+        }
+        #factor{
+            margin: 1mm;
+        }
+        #input{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/index.html" id="a1" >Home</a>
+        <a href="/links/Assignment 1.html" style="width:25% !important" target="_blank">Assignment 1 - Conversion</a>
+        <a href="/links/Assignment 2.html" style="width:25% !important" target="_blank">Assignment 2 - Income tax Calculator</a>
+        <a href="/links/Assignment 3.html" style="width:25% !important" target="_blank">Assignment 3 - Factorial</a>
+        <a href="/links/Assignment 4.html" style="width:15% !important" target="_blank">Assignment 4 - Simple Payroll</a>
+    </nav> 
+    <div>
+        <h1 id="h1">Assignment 3</h1>
+    </div>
+    <div id="factorial" class="calculator-box">
+        <h3>Factorial</h3>
+        <label for="n">Number:</label>
+        <input id="factorialN" type="number" placeholder="Input number"><br>
+        <button id="factorButton" onclick="factorIt()">Enter</button>
+        <br>
+        <p>Factorial: <span id="factorialResult"></span></p>
+    </div>
+    <div id="sum" class="calculator-box">
+        <h3>Sum:</h3>
+        <label for="n">Number:</label>
+        <input id="sumN" type="number" placeholder="Input number"><br>
+        <button id="sumButton" onclick="sumIt()">Enter</button>
+        <br>
+        <p>Sum: <span id="sumResult"></span></p>
+    </div>
+    <div id="average" class="calculator-box">
+        <h3>Average</h3>
+        <label for="n">Number:</label>
+        <input id="averageN" type="number" placeholder="Input number"><br>
+        <button id="averageButton" onclick="averageIt()">Enter</button>
+        <br>
+        <p>Average: <span id="averageResult"></span></p>
+    </div>
+
+    <script>
+        function factorIt() {
+            let factorialN = parseFloat(document.getElementById("factorialN").value);
+            const factorialResult = document.getElementById("factorialResult");
+            let factorialValue = 1;
+    
+            while (factorialN > 0){
+                factorialValue = factorialValue * factorialN;
+                factorialN--;
+            }
+
+            factorialResult.innerHTML = factorialValue;   
+        }
+        function sumIt() {
+            let sumN = parseFloat(document.getElementById("sumN").value);
+            const sumResult = document.getElementById("sumResult");
+
+            let sumValue = 0;
+
+            do {
+                sumValue += sumN;
+                sumN--;
+
+            } while (sumN > 0)
+
+            sumResult.innerHTML = sumValue;   
+        }
+        function averageIt() {
+            let averageN = parseFloat(document.getElementById("averageN").value);
+            const averageResult = document.getElementById("averageResult");
+
+            let averageValue = 0,
+                averageNumOfElements = averageN;
+
+            for (let i = averageN; i > 0; i--){
+                averageValue += averageN;
+
+                if (averageN === 1) {
+                    averageValue /= averageNumOfElements;
+                }
+
+                averageN--;
+            }
+
+            averageResult.innerHTML = averageValue;   
+        }
+        console.log('Hello')
+    </script>
+</body>
+</html>
