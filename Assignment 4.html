@@ -59,7 +59,10 @@
           color: white;
           text-transform: uppercase;
         }
-        
+        #list{
+          padding: 10px;
+          border: 100px;
+        }
        
         
         /*.wrapper{
@@ -82,13 +85,8 @@
           font-family: 'Quicksand', sans-serif;
         }
         .rightside{
-          background-color: gray;
-          float:right;
-          height: px;
-          width: 550px;
-          margin-right: 20px;
-          border-radius: 10px;
-          overflow: auto;
+          text-align: center;
+          margin-left: 650px;
         }
     </style>
 </head>
@@ -179,7 +177,7 @@
       var id = RemoveEmp.value
       var toDelete;
 
-      toDelete = confirm("Delete item no. "+id+"?")
+      toDelete = confirm("Delete item #"+id+"?")
       if(toDelete){
         cart.splice(id-1,1)
         employeeCount.value = cart.length
