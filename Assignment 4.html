@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <title>Assignment 4aj</title>
+    <style>
+        *{
+        background-color: aquamarine;
+        margin: 0px;
+        padding: opx;
+        box-sizing: border-box;
+        }
+        nav{
+            margin: -9px;
+            height: 
+            width: 
+            min-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: auto;
+        }
+        #a1{
+            margin-right: 12mm;
+        }
+        a{
+            text-align: center;
+            position: relative;
+            text-decoration: none;
+            font-family: 'Poppins',sans-serif;
+            color: #000000;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            padding: 0 10px;
+        }
+        a:after{
+            content: "";
+            position: absolute;
+            background-color: #ffa31a;
+            height: 3px;
+            width: 0;
+            left: 0;
+            bottom: -10px;
+            transition: 0.3s;
+        }
+        a:hover{
+            color: #4e4e4e;
+        }
+        a:hover:after{
+            width: 100%;
+        }
+        .logo a{
+          letter-spacing: 5px;
+          font-size: 20px;
+          text-decoration: none;
+          color: white;
+          text-transform: uppercase;
+        }
+        
+       
+        
+        /*.wrapper{
+          width: 800px;
+          height: 720px;
+          border: 5px solid black;
+          border-radius: 10px;
+          margin-bottom: 30px;
+        }*/
+        .description {
+          text-align: center;
+          padding: 10px;
+        }
+        
+        .inputBox{
+          text-align: center;
+          display: ;
+          float:center;
+          margin:10px;
+          padding: px;
+          font-family: 'Quicksand', sans-serif;
+        }
+        .rightside{
+          background-color: gray;
+          float:right;
+          height: px;
+          width: 550px;
+          margin-right: 20px;
+          border-radius: 10px;
+          overflow: auto;
+        }
+    </style>
+</head>
+<body onload="initEmp()">
+    <nav>
+        <a href="/index.html" id="a1" >Home</a>
+            <a href="/Assignment 1.html" style="width:25% !important" target="_blank">Assignment 1 - Conversion</a>
+            <a href="/Assignment 2.html" style="width:25% !important" target="_blank">Assignment 2 - Income tax Calculator</a>
+            <a href="/Assignment 3.html" style="width:25% !important" target="_blank">Assignment 3 - Factorial</a>
+            <a href="/Assignment 4.html" style="width:15% !important" target="_blank">Assignment 4 - Simple Payroll</a>
+    </nav> 
+  <div class="content">
+    <div class="wrapper">
+      <div class="description">
+        <h1>Assignment 4</h1>
+        <h3>Simple Payroll</h3>
+      </div>
+      <div class="inner-content">
+        <div class="inputBox">
+          <label for="itemdesc">Employee Name</label>
+          <input type="text" name="name" id="name">
+          <label for="qty">Days Work</label>
+          <input type="number" name="days-work" id="days-work"> <br>
+          <br>
+          <label>Daily Rate</label>
+          <input type="number" name="daily-rate" id="daily-rate">
+          <label for="deduction-amount">Deduction Amount</label>
+          <input type="number" name="deduction-amount" id="deduction-amount">
+          <br>
+          <br>
+          <button onclick="addEmployee()">Add Employee</button>
+          <br>
+          <br>
+          <label for="numberEmp">Employee Count</label>
+          <input type="number" name="numberEmp" id="numberEmp" readonly>
+          <label for="N">Remove Employee #</label>
+          <input type="number" name="no" id="no"> <br>
+          <br>
+          <button onclick="removeEmployee()">Remove Employee</button>
+          
+          <button onclick="removeAll()">Remove All</button>
+        </div>
+        <div class="rightside">
+          <p id="list"></p>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <script>
+    const employeeName = document.getElementById("name")
+    const daysWork = document.getElementById("days-work")
+    const dailyRate = document.getElementById("daily-rate")
+    const deductionAmount = document.getElementById("deduction-amount")
+    const employeeCount = document.getElementById("numberEmp")
+    const RemoveEmp = document.getElementById("no")
+    var cart = []
+
+    function initEmp(){
+      cart=[]
+      employeeCount.value = cart.length
+      document.getElementById("list").innerHTML= ""
+    }
+
+    function addEmployee(){
+
+      var employee = {
+        name: "",
+        days: 1,
+        rate: 1,
+        deduction: 1,
+        gross: 1,
+        net: 1
+      }
+      employee.name = employeeName.value
+      employee.days = daysWork.value
+      employee.rate = dailyRate.value
+      employee.deduction = deductionAmount.value
+      employee.gross = employee.days * employee.rate
+      employee.net = employee.gross - employee.deduction
+
+      console.log(employee)
+      cart.push(employee)
+      employeeCount.value = cart.length
+      showCart();
+    }
+
+    function removeEmployee(){
+      var id = RemoveEmp.value
+      var toDelete;
+
+      toDelete = confirm("Delete item no. "+id+"?")
+      if(toDelete){
+        cart.splice(id-1,1)
+        employeeCount.value = cart.length
+        showCart()
+      }
+    }
+    function removeAll(){
+      var toDelete;
+
+      toDelete = confirm("Are you sure you want to remove all Employees?")
+      if(toDelete){
+        initEmp()
+      }
+    }
+    function showCart(){
+      var theader = "<thead>"
+        +"<tr>"
+        +'<th style="text-align: center">No.</th>'
+        +'<th style="text-align: center">Employee Name'
+        +'<th style="text-align: center">Days Worked</th>'
+        +'<th style="text-align: center">Daily Rate</th>'
+        +'<th style="text-align: center">Gross Pay</th>'
+        +'<th style="text-align: center">Deduction Amount</th>'
+        +'<th style="text-align: center">Net Pay</th>'
+        +"</tr>"
+        +"</thead>"
+        
+        var tbody = ''
+        for(let i = 0;i < cart.length; i++){
+          tbody += "<tr>"
+            + '<td style="text-align: center">'+(i+1)+'</td>'
+            + '<td style="text-align: center">'+cart[i].name+'</td>'
+            + '<td style="text-align: center">'+cart[i].days+'</td>'
+            + '<td style="text-align: center">'+cart[i].rate+'</td>'
+            + '<td style="text-align: center">'+cart[i].gross+'</td>'
+            + '<td style="text-align: center">'+cart[i].deduction+'</td>'
+            + '<td style="text-align: center">'+cart[i].net+'</td>'
+            + '</tr>'
+        }
+       document.getElementById("list").innerHTML="<table>"+theader+tbody+"</table>"
+    }
+
+
+    hamburger = document.querySelector(".hamburger");
+    hamburger.onclick = function() {
+        navBar = document.querySelector(".nav-links");
+        navBar.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
